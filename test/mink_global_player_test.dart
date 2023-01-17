@@ -52,6 +52,25 @@ void main() {
       });
     });
 
+    group('playOnlyMusicAndVoice', () {
+      test('call music and offVoice player play function', () async {
+        final MockFlowPlayer offVoiceFlowPlayer = MockFlowPlayer();
+        final MockFlowPlayer effectFlowPlayer = MockFlowPlayer();
+        final MockFlowPlayer musicFlowPlayer = MockFlowPlayer();
+
+        final MinkGlobalPlayer globalPlayer = MinkGlobalPlayer(
+          mockedEffectPlayer: effectFlowPlayer,
+          mockedMusicPlayer: musicFlowPlayer,
+          mockedOffVoicePlayer: offVoiceFlowPlayer,
+        );
+
+        await globalPlayer.playOnlyMusicAndVoice();
+        verify(offVoiceFlowPlayer.play()).called(1);
+        verifyNever(effectFlowPlayer.play()).called(0);
+        verify(musicFlowPlayer.play()).called(1);
+      });
+    });
+
     group('pause', () {
       test('call all player pause function', () async {
         final MockFlowPlayer offVoiceFlowPlayer = MockFlowPlayer();

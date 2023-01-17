@@ -1,4 +1,3 @@
-import 'package:cross_file/cross_file.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:mink_global_player/flow_player.dart';
@@ -30,11 +29,11 @@ void main() {
           mockedAudioPlayer: mockAudioPlayer,
         );
 
-        final XFile file = XFile('/path/for/test/audio.mp3');
+        const String asset = 'assets/audio.mp3';
 
-        await flowPlayer.loadFile(file);
+        await flowPlayer.loadAsset(asset);
         verify(mockAudioPlayer.stop()).called(1);
-        verify(mockAudioPlayer.setFilePath(file.path)).called(1);
+        verify(mockAudioPlayer.setAsset(asset)).called(1);
       });
     });
 
@@ -51,6 +50,20 @@ void main() {
         verify(mockAudioPlayer.setLoopMode(loopMode)).called(1);
         verify(mockAudioPlayer.setVolume(any)).called(1);
         verify(mockAudioPlayer.play()).called(1);
+      });
+    });
+
+    group('restart', () {
+      test('call stop before play', () async {
+        MockAudioPlayer mockAudioPlayer = MockAudioPlayer();
+        final FlowPlayer flowPlayer = FlowPlayer(
+          mockedAudioPlayer: mockAudioPlayer,
+        );
+
+        await flowPlayer.restart();
+        verify(mockAudioPlayer.seek(any)).called(1);
+        verify(flowPlayer.stop()).called(1);
+        verify(flowPlayer.play()).called(1);
       });
     });
 

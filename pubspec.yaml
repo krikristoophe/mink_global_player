@@ -1,14 +1,12 @@
 name: mink_global_player
 description: A new Flutter package project.
 version: 0.0.1
-homepage:
 
 environment:
   sdk: '>=2.18.6 <3.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
-  cross_file: ^0.3.3+2
   flutter:
     sdk: flutter
   just_audio: ^0.9.31

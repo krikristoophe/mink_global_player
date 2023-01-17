@@ -1,4 +1,3 @@
-import 'package:cross_file/cross_file.dart';
 import 'package:just_audio/just_audio.dart';
 
 class FlowPlayer {
@@ -17,16 +16,21 @@ class FlowPlayer {
     await _player.setUrl(url);
   }
 
-  Future<void> loadFile(XFile file) async {
+  Future<void> loadAsset(String asset) async {
     await stop();
-
-    await _player.setFilePath(file.path);
+    await _player.setAsset(asset);
   }
 
   Future<void> play() async {
     await _player.setLoopMode(loopMode);
     await _player.setVolume(volume);
     await _player.play();
+  }
+
+  Future<void> restart() async {
+    await stop();
+    await _player.seek(Duration.zero);
+    await play();
   }
 
   Future<void> stop() async {

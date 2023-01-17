@@ -41,4 +41,11 @@ class MinkGlobalPlayer {
       effect.play(),
     ]);
   }
+
+  Future<void> playOnlyMusicAndVoice() async {
+    await Future.wait([
+      offVoice.play(),
+      music.play(),
+    ]);
+  }
 }
