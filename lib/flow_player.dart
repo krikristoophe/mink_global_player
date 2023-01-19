@@ -29,7 +29,7 @@ class FlowPlayer {
 
   /// Load audio from app assets
   /// [asset] need to have full assets path
-  /// 
+  ///
   /// ```dart
   /// loadAssets('assets/voice.mp3')
   /// ```
