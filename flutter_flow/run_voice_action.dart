@@ -10,6 +10,6 @@ import 'package:flutter/material.dart';
 import '../widgets/index.dart';
 
 Future runVoice(String asset) async {
-  await MinkGlobalPlayerWidget.globalPlayer.voice.loadAsset(asset);
-  await MinkGlobalPlayerWidget.globalPlayer.voice.restart();
+  await MinkGlobalPlayerWidget.globalPlayer.offVoice.loadAsset(asset);
+  await MinkGlobalPlayerWidget.globalPlayer.offVoice.restart();
 }
