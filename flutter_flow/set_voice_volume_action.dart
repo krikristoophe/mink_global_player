@@ -10,5 +10,5 @@ import 'package:flutter/material.dart';
 import '../widgets/index.dart';
 
 Future setVoiceVolume(double volume) async {
-  await MinkGlobalPlayerWidget.globalPlayer.voice.setVolume(volume);
+  await MinkGlobalPlayerWidget.globalPlayer.offVoice.setVolume(volume);
 }

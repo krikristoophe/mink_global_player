@@ -10,6 +10,6 @@ import 'package:flutter/material.dart';
 import '../widgets/index.dart';
 
 Future runVoiceFromUrl(String url) async {
-  await MinkGlobalPlayerWidget.globalPlayer.voice.loadUrl(url);
-  await MinkGlobalPlayerWidget.globalPlayer.voice.restart();
+  await MinkGlobalPlayerWidget.globalPlayer.offVoice.loadUrl(url);
+  await MinkGlobalPlayerWidget.globalPlayer.offVoice.restart();
 }
