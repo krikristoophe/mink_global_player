@@ -38,7 +38,7 @@ void main() {
     });
 
     group('play', () {
-      test('set loopMode and volume before calling player play', () async {
+      test('player not initialized don\'t call play', () async {
         const LoopMode loopMode = LoopMode.one;
         MockAudioPlayer mockAudioPlayer = MockAudioPlayer();
         final FlowPlayer flowPlayer = FlowPlayer(
@@ -49,7 +49,7 @@ void main() {
         await flowPlayer.play();
         verify(mockAudioPlayer.setLoopMode(loopMode)).called(1);
         verify(mockAudioPlayer.setVolume(any)).called(1);
-        verify(mockAudioPlayer.play()).called(1);
+        verifyNever(mockAudioPlayer.play());
       });
     });
 

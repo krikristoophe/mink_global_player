@@ -43,7 +43,9 @@ class FlowPlayer {
   Future<void> play() async {
     await _player.setLoopMode(loopMode);
     await _player.setVolume(volume);
-    await _player.play();
+    if (_player.audioSource != null) {
+      await _player.play();
+    }
   }
 
   /// Restart current loaded audio
