@@ -1,6 +1,6 @@
 name: mink_global_player
 description: A global audio player manager
-version: 0.0.8
+version: 0.0.9
 repository: https://github.com/krikristoophe/mink_global_player
 
 publish_to: none
